@@ -1,0 +1,54 @@
+form {
+  display: grid;
+  max-width: 360px;
+  min-width: 300px;
+  gap: 20px;
+  height: 300px;
+  align-content: center;
+}
+
+form input {
+  padding: 7px;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  outline: none;
+}
+
+form > .form-group {
+  position: relative;
+}
+
+form > button {
+  justify-self: center;
+  background-color: #0171d3;
+  padding: 10px 30px;
+  border: none;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.field-message {
+  font-size: 10px;
+  position: absolute;
+  bottom: -13px;
+  right: 0;
+  padding-left: 10px;
+  color: red;
+}
+.field-message::before {
+  content: "*";
+}
+form input:valid {
+  background-color: rgba(100, 253, 94, 0.1);
+}
+form input.invalid-input {
+  background-color: rgba(255, 0, 0, 0.078);
+  animation: shakeX 200ms;
+}
+.field-message>span:first-child{
+  display: inline-block;
+}
+.field-message>span{
+  display: none;
+}
