@@ -1,0 +1,19 @@
+table, td, tr{
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+td{
+    padding: 10px 15px;
+}
+button{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    justify-self: center;
+    background-color: #7285968e;
+    padding: 10px 30px;
+    border: none;
+    color: #0171d3;
+    cursor: pointer;
+}
