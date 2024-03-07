@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: [
+    '../../node_modules/animate.css/animate.min.css',
+    './app.component.css',
+  ],
 })
 export class AppComponent {
-  title = 'new-app';
 }
