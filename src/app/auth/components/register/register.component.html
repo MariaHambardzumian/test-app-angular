@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+<form [formGroup]="regForm">
+  <div class="form-group">
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Email"
+      required
+      [ngClass]="{ 'invalid-input': isControlInvalid('email') }"
+    />
+    <div class="field-message"
+      *ngIf="
+        emailControl.invalid && (emailControl.dirty || emailControl.touched)
+      "
+    >
+      <span *ngIf="emailControl.errors?.['required'] "> Email is required</span>
+      <span *ngIf="emailControl.errors?.['email'] ">
+        Please enter a valid email address</span
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      formControlName="firstName"
+      placeholder="Fisrt Name"
+      required
+      [ngClass]="{ 'invalid-input': isControlInvalid('firstName') }"
+    />
+    <div class="field-message"
+      *ngIf="
+        firstNameControl.invalid &&
+        (firstNameControl.dirty || firstNameControl.touched)
+      "
+    >
+      <span *ngIf="firstNameControl.errors?.['required'] ">
+        First Name is required</span
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="text"
+      formControlName="lastName"
+      placeholder="Last Name"
+      required
+      [ngClass]="{ 'invalid-input': isControlInvalid('lastName') }"
+    />
+    <div class="field-message"
+      *ngIf="
+        lastNameControl.invalid &&
+        (lastNameControl.dirty || lastNameControl.touched)
+      "
+    >
+      <span *ngIf="lastNameControl.errors?.['required'] ">
+        Name is required</span
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+      required
+      [ngClass]="{ 'invalid-input': isControlInvalid('password') }"
+    />
+    <div class="field-message"
+      *ngIf="
+        passwordControl.invalid &&
+        (passwordControl.dirty || passwordControl.touched)
+      "
+    >
+      <span *ngIf="passwordControl.errors?.['required'] "
+        >Password is required</span
+      >
+      <span *ngIf="passwordControl.errors?.['minlength'] "
+        >Password must be at least 8 characters long</span
+      >
+      <span *ngIf="passwordControl.errors?.['pattern'] "
+        >Password requires lowercase, uppercase, numbers, symbols</span
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      formControlName="confirmPassword"
+      placeholder="Confirm Password"
+      required
+      [ngClass]="{ 'invalid-input': isControlInvalid('confirmPassword') }"
+    />
+    <div class="field-message"
+      *ngIf="
+        confirmPasswordControl.invalid &&
+        (confirmPasswordControl.dirty || confirmPasswordControl.touched)
+      "
+    >
+      <span *ngIf="confirmPasswordControl.errors?.['required'] ">
+        Confirmation is required</span
+      >
+      <span *ngIf="confirmPasswordControl.errors?.['PasswordNoMatch'] "
+        >Password doesn't match
+      </span>
+    </div>
+  </div>
+  <button (click)="handleSignup()">Register</button>
+</form>
