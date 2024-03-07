@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<form [formGroup]="loginForm">
+  <div class="form-group">
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Email"
+      required
+      [ngClass]="{
+        'invalid-input': isControlInvalid('email') || failed.failMessage
+      }"
+    />
+    <div
+      class="field-message"
+      *ngIf="
+        emailControl.invalid && (emailControl.dirty || emailControl.touched)
+      "
+    >
+      <span *ngIf="emailControl.errors?.['required']"> Email is required</span>
+      <span *ngIf="emailControl.errors?.['email']">
+        Please enter a valid email address</span
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+      required
+      [ngClass]="{
+        'invalid-input': isControlInvalid('password') || failed.failMessage
+      }"
+    />
+    <div
+      class="field-message"
+      *ngIf="
+        passwordControl.invalid &&
+        (passwordControl.dirty || passwordControl.touched)
+      "
+    >
+      <span *ngIf="passwordControl.errors?.['required']">
+        Email is required</span
+      >
+    </div>
+  </div>
+  <button (click)="login()">Login</button>
+</form>
+<div class="failed-login" *ngIf="failed?.failMessage">
+  <span>{{ failed.failMessage }}</span>
+</div>

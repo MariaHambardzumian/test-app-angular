@@ -1,0 +1,13 @@
+.failed-login {
+  position: relative;
+}
+
+.failed-login > span {
+  position: absolute;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+  width: 100%;
+  bottom: 10%;
+  color: red;
+}
