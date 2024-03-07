@@ -1,0 +1,28 @@
+
+.nav{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    gap: 5px;
+    margin: 10px 0;
+}
+.nav>a{
+    flex: 1 1 200px;
+    background-color: #0171d3;
+    padding: 10px 0;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    display: block;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.nav>a.active-link{
+    background-color: transparent;
+    color: #0171d3;
+    border: 1px solid;
+    border-bottom: none;
+}
