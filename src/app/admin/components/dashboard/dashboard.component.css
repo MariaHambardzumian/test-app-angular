@@ -17,3 +17,8 @@ button{
     color: #0171d3;
     cursor: pointer;
 }
+.users-info{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}

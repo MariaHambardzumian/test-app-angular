@@ -7,7 +7,8 @@ import {
   Validators,
 } from '@angular/forms'
 import { Router } from '@angular/router'
-import { AuthService } from 'src/app/services/auth.service'
+import { AuthService } from 'src/app/services/auth/auth.service'
+import { HttpClientService } from 'src/app/services/http-client/http-client.service'
 
 export function confirmPasswordValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -25,8 +26,8 @@ export function confirmPasswordValidator(): ValidatorFn {
 export class RegisterComponent implements OnInit {
   regForm = this.fb.group({
     email: ['', [Validators.email, Validators.required]],
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
+    first_name: ['', Validators.required],
+    last_name: ['', Validators.required],
     password: [
       '',
       [
@@ -41,16 +42,24 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private httpClientService: HttpClientService,
   ) {}
 
   ngOnInit(): void {}
 
   handleSignup() {
     if (this.regForm.valid) {
-      try {
-        this.authService.addUser(this.regForm.value)
-        this.router.navigate(['/dashboard'])
-      } catch (error) {}
+      const newUser = {...this.regForm.value, username : this.regForm.value.email }
+      delete newUser.confirmPassword;
+      this.httpClientService.postData(newUser).subscribe({
+        next: (response) => {
+          this.authService.startSession(response._kmd.authtoken)
+          this.router.navigate(['/auth/login'])
+        },
+        error: (error) => {
+          console.error('Error fetching data:', error)
+        },}
+      )
     }
   }
   get confirmPasswordControl(): AbstractControl {
@@ -63,10 +72,10 @@ export class RegisterComponent implements OnInit {
     return this.regForm.get('email') as AbstractControl
   }
   get firstNameControl(): AbstractControl {
-    return this.regForm.get('firstName') as AbstractControl
+    return this.regForm.get('first_name') as AbstractControl
   }
   get lastNameControl(): AbstractControl {
-    return this.regForm.get('lastName') as AbstractControl
+    return this.regForm.get('last_name') as AbstractControl
   }
   isControlInvalid(controlName: string): boolean {
     const control = this.regForm.get(controlName)

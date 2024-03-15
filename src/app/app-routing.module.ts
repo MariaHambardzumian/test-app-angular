@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { AdminGuard } from './guards/admin.guard'
 import { AuthGuard } from './guards/auth.guard'
+import { TestComponent } from './test/test.component'
 
 const mainRoutes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: 'test', component:TestComponent ,  },
   { path: 'dashboard', redirectTo: 'admin', pathMatch: 'full' },
   {
     path: 'auth',

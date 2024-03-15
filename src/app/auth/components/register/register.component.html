@@ -1,4 +1,3 @@
-<app-navbar></app-navbar>
 <form [formGroup]="regForm">
   <div class="form-group">
     <input
@@ -22,7 +21,7 @@
   <div class="form-group">
     <input
       type="text"
-      formControlName="firstName"
+      formControlName="first_name"
       placeholder="Fisrt Name"
       required
       [ngClass]="{ 'invalid-input': isControlInvalid('firstName') }"
@@ -41,7 +40,7 @@
   <div class="form-group">
     <input
       type="text"
-      formControlName="lastName"
+      formControlName="last_name"
       placeholder="Last Name"
       required
       [ngClass]="{ 'invalid-input': isControlInvalid('lastName') }"

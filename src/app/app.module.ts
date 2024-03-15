@@ -5,9 +5,12 @@ import { AppComponent } from './app.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AuthModule } from './auth/auth.module'
 import { AdminModule } from './admin/admin.module'
+import { HttpClientModule } from '@angular/common/http'
+import { NavbarComponent } from './auth/components/navbar/navbar.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NavbarComponent, TestComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -15,6 +18,7 @@ import { AdminModule } from './admin/admin.module'
     ReactiveFormsModule,
     AuthModule,
     AdminModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

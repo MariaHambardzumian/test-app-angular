@@ -14,3 +14,9 @@ export interface UserLogin {
 export interface FailedLogin {
   failMessage: string | null
 }
+
+export interface UsersList {
+  email: string
+  first_name: string
+  last_name: string
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { AuthService } from 'src/app/services/auth.service'
+import { UsersList } from 'src/app/auth/interfaces/auth.interface'
+import { AuthService } from 'src/app/services/auth/auth.service'
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +9,21 @@ import { AuthService } from 'src/app/services/auth.service'
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  users = this.authService.getUsers().map((user) => {
-    user.password = user.password.replace(/./g, '*')
-    return user
-  })
+  users : UsersList[] = []
+  fisrtName = ''
+  lastName = ''
   constructor(
     private authService: AuthService,
     private router: Router,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isUserActive().subscribe(([userInfo, allUsers]) => {
+      this.users = allUsers as UsersList[]
+      this.fisrtName = userInfo.firstName
+      this.lastName = userInfo.lastName
+    })
+  }
   logOut() {
     this.authService.logOut()
     this.router.navigate(['/'])

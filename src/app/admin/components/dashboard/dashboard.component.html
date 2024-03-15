@@ -1,4 +1,8 @@
 <div class="dashboard-wrapper">
+    <div class="users-info">
+        <p>{{fisrtName}}</p>
+        <p>{{lastName}}</p>
+    </div>
     <button (click)="logOut()">Log Out</button>
     <table>
         <thead>
@@ -10,11 +14,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of users">
-                <td>{{user.firstName}}</td>
-                <td>{{user.lastName}}</td>
+            <tr  *ngFor="let user of users">
+                <td>{{user.first_name}}</td>
+                <td>{{user.last_name}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.password}}</td>
             </tr>
         </tbody>
     </table>
